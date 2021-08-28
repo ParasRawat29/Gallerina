@@ -1,12 +1,15 @@
 import React from "react";
 import { auth, database } from "../config";
 import firebase from "firebase/app";
+import { SignInBtnWrapper, SignInWrapper } from "./SignIn.styled";
+import { Alert, Icon } from "rsuite";
 
 function SignIn() {
   const signInWithProvider = async (provider) => {
     try {
       const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
-      // console.log(additionalUserInfo);
+      Alert.success("signed in", 3000);
+
       if (additionalUserInfo.isNewUser) {
         console.log("here");
         let userRef = database.ref(`/profiles/${user.uid}`);
@@ -16,7 +19,7 @@ function SignIn() {
         });
       }
     } catch (err) {
-      console.log(err);
+      Alert.info(err.message, 3000);
     }
   };
 
@@ -24,17 +27,19 @@ function SignIn() {
     signInWithProvider(new firebase.auth.GoogleAuthProvider());
   };
   return (
-    <div>
-      <div className="signInHeading">
+    <SignInWrapper>
+      <div div className="signInHeading">
         <h1 className="head">Gallerina</h1>
-        <h4>Sign In</h4>
+        <h5 className="info">Your Photo Keeper</h5>
       </div>
-      <div className="signInBtnContainer">
+      <SignInBtnWrapper>
         <div className="googleSignIn">
-          <button onClick={onGoogleSignIn}>Google</button>
+          <button onClick={onGoogleSignIn}>
+            <Icon icon="google" size="2x" /> Google Sign In
+          </button>
         </div>
-      </div>
-    </div>
+      </SignInBtnWrapper>
+    </SignInWrapper>
   );
 }
 
