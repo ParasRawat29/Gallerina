@@ -36,12 +36,30 @@ export const PreviewModal = styled.div`
     .textareaInput:focus {
       border-color: #719ece;
       box-shadow: 0 0 20px #719ece;
+      color: black;
     }
     .uploadBtn {
       padding: 2px 10px;
       border-radius: 20px;
       font-size: 1.3rem;
       background-color: lightgreen;
+      color: black;
     }
+  }
+`;
+
+export const HomeWrapper = styled.div`
+  text-align: center;
+  .head {
+    font-size: 2.5rem;
+    margin-bottom: 0.51rem;
+    color: rebeccapurple;
+  }
+  input {
+    display: none;
+  }
+  label {
+    margin-top: 20px;
+    cursor: pointer;
   }
 `;

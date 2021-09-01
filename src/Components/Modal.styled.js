@@ -11,12 +11,15 @@ export const ModalBackdrop = styled.div`
     position: absolute;
     top: 2%;
     right: 10%;
+    color: white;
+    background-color: inherit;
+    border-radius: 50%;
   }
   .content {
     width: 70%;
     height: 70%;
     margin: 60px auto;
-    color: black;
+    color: white;
     text-align: center;
   }
 `;
