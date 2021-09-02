@@ -5,6 +5,7 @@ const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
   const [profiles, setProfiles] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let userRef;
@@ -20,19 +21,22 @@ export function ProfileProvider({ children }) {
 
           setProfiles(data);
         });
+        setIsLoading(false);
       } else {
         if (userRef) userRef.off();
         setProfiles(null);
+        setIsLoading(false);
       }
     });
 
     return () => {
       authUnSub();
+      setIsLoading(false);
       if (userRef) userRef.off();
     };
   }, []);
   return (
-    <ProfileContext.Provider value={profiles}>
+    <ProfileContext.Provider value={{ profiles, isLoading }}>
       {children}
     </ProfileContext.Provider>
   );
