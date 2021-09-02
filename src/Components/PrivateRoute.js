@@ -4,7 +4,6 @@ import { ProfileContext } from "../context/profile.context";
 
 function PrivateRoute({ children, ...routeProps }) {
   const profiles = useContext(ProfileContext);
-  // console.log(profiles);
   if (!profiles) {
     return <Redirect to="/signin" />;
   }

@@ -50,6 +50,7 @@ export const PreviewModal = styled.div`
 
 export const HomeWrapper = styled.div`
   text-align: center;
+  background-color: beige;
   .head {
     font-size: 2.5rem;
     margin-bottom: 0.51rem;

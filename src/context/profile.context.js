@@ -20,6 +20,9 @@ export function ProfileProvider({ children }) {
 
           setProfiles(data);
         });
+      } else {
+        if (userRef) userRef.off();
+        setProfiles(null);
       }
     });
 

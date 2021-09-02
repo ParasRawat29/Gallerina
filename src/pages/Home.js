@@ -6,6 +6,8 @@ import { useModal } from "../custom-hooks";
 import { HomeWrapper, PreviewModal } from "./Home.styled";
 import { ProfileContext } from "../context/profile.context";
 import { Progress } from "rsuite";
+import Navbar from "../Components/Navbar";
+
 const FileInputTypes = ".png , .jpg , .jpeg";
 const acceptedFileTypes = ["image/png", "image/pjpeg", "image/jpeg"];
 
@@ -89,57 +91,60 @@ function Home() {
     setDescription(des);
   };
   return (
-    <HomeWrapper>
-      <h3 className="head">Your Gallery</h3>
-      <h6>Lorem ipsum dolor, sit amet consectetur adipisicing</h6>
+    <>
+      <Navbar />
+      <HomeWrapper>
+        <h3 className="head">Your Gallery</h3>
+        <h6>Lorem ipsum dolor, sit amet consectetur adipisicing</h6>
 
-      <label htmlFor="FileUpload">
-        <Icon icon="plus-circle" size="3x" strokeColor="red" />
-        <input
-          id="FileUpload"
-          type="file"
-          accept={FileInputTypes}
-          onChange={onFileInputChange}
-        />
-      </label>
+        <label htmlFor="FileUpload">
+          <Icon icon="plus-circle" size="3x" strokeColor="red" />
+          <input
+            id="FileUpload"
+            type="file"
+            accept={FileInputTypes}
+            onChange={onFileInputChange}
+          />
+        </label>
 
-      {preview && isOpen && (
-        <PreviewModal>
-          <Modal close={close} open={open}>
-            {isLoading && (
-              <Progress.Line
-                percent={percentage}
-                strokeColor="#ffc107"
-                status="active"
-                strokeWidth="6"
-              />
-            )}
-            <header>Add Description and Upload</header>
-            <section>
-              <img src={preview} alt="yourimage" />
-            </section>
-            <footer>
-              <textarea
-                className="textareaInput"
-                type="textarea"
-                maxLength="100"
-                placeholder="Add Description (max 100 characters)"
-                value={description}
-                onChange={onDescriptionChange}
-                disabled={isLoading}
-              />
-              <button
-                className="uploadBtn"
-                onClick={onUploadClick}
-                disabled={isLoading}
-              >
-                Upload
-              </button>
-            </footer>
-          </Modal>
-        </PreviewModal>
-      )}
-    </HomeWrapper>
+        {preview && isOpen && (
+          <PreviewModal>
+            <Modal close={close} open={open}>
+              {isLoading && (
+                <Progress.Line
+                  percent={percentage}
+                  strokeColor="#ffc107"
+                  status="active"
+                  strokeWidth="6"
+                />
+              )}
+              <header>Add Description and Upload</header>
+              <section>
+                <img src={preview} alt="yourimage" />
+              </section>
+              <footer>
+                <textarea
+                  className="textareaInput"
+                  type="textarea"
+                  maxLength="100"
+                  placeholder="Add Description (max 100 characters)"
+                  value={description}
+                  onChange={onDescriptionChange}
+                  disabled={isLoading}
+                />
+                <button
+                  className="uploadBtn"
+                  onClick={onUploadClick}
+                  disabled={isLoading}
+                >
+                  Upload
+                </button>
+              </footer>
+            </Modal>
+          </PreviewModal>
+        )}
+      </HomeWrapper>
+    </>
   );
 }
 
