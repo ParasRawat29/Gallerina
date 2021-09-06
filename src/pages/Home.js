@@ -7,7 +7,7 @@ import { HomeWrapper, PreviewModal } from "./Home.styled";
 import { ProfileContext } from "../context/profile.context";
 import { Progress } from "rsuite";
 import Navbar from "../Components/Navbar";
-import ImagesContainer from "../Components/ImagesContainer";
+import ImagesContainer from "../Components/Images/ImagesContainer";
 
 const FileInputTypes = ".png , .jpg , .jpeg";
 const acceptedFileTypes = ["image/png", "image/pjpeg", "image/jpeg"];
