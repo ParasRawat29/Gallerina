@@ -7,6 +7,7 @@ import { HomeWrapper, PreviewModal } from "./Home.styled";
 import { ProfileContext } from "../context/profile.context";
 import { Progress } from "rsuite";
 import Navbar from "../Components/Navbar";
+import ImagesContainer from "../Components/ImagesContainer";
 
 const FileInputTypes = ".png , .jpg , .jpeg";
 const acceptedFileTypes = ["image/png", "image/pjpeg", "image/jpeg"];
@@ -66,7 +67,7 @@ function Home() {
         },
         () => {
           uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-            database.ref(`/profiles/${profiles.uid}/image`).push().set({
+            database.ref(`/profiles/${profiles.uid}/images`).push().set({
               url: url,
               des: description,
             });
@@ -79,11 +80,12 @@ function Home() {
         }
       );
     } catch (error) {
-      Alert.error("Image Not uploaded", 3000);
       setIsLoading(false);
       setPercentage(0);
-      close();
+      setDescription("");
       console.log(error);
+      close();
+      Alert.error("Image Not uploaded", 3000);
     }
   };
 
@@ -144,6 +146,8 @@ function Home() {
             </Modal>
           </PreviewModal>
         )}
+
+        <ImagesContainer />
       </HomeWrapper>
     </>
   );

@@ -16,7 +16,7 @@ function SignIn() {
         await userRef.set({
           name: user.displayName,
           createdAt: firebase.database.ServerValue.TIMESTAMP,
-          image: [{}],
+          images: [{}],
         });
       }
     } catch (err) {
