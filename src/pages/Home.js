@@ -23,8 +23,8 @@ function Home() {
   const [percentage, setPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const profile = useContext(ProfileContext);
-
+  const { profiles } = useContext(ProfileContext);
+  // console.log(profiles);
   const onFileInputChange = (e) => {
     const currFiles = e.target.files;
 
@@ -48,40 +48,41 @@ function Home() {
   const onUploadClick = async () => {
     try {
       setIsLoading(true);
-      storage
-        .ref(`/profiles/${profile.uid}`)
+      const uploadTask = storage
+        .ref(`/profiles/${profiles.uid}`)
         .child(img.name)
-        .put(img)
-        .on(
-          "state_changed",
-          (snap) => {
-            const per = Math.round(
-              (snap.bytesTransferred / snap.totalBytes) * 100
-            );
-            setPercentage(per);
-          },
-          (err) => {},
-          () => {
-            storage
-              .ref(`/profiles/${profile.uid}`)
-              .child(img.name)
-              .getDownloadURL()
-              .then((url) => {
-                database.ref(`/profiles/${profile.uid}/image`).push().set({
-                  url: url,
-                  des: description,
-                });
-              });
-            setIsLoading(false);
-            setPercentage(0);
-            Alert.success("Image Uploaded", 3000);
-            setDescription("");
-            close();
-          }
-        );
+        .put(img);
+      uploadTask.on(
+        "state_changed",
+        (snap) => {
+          const per = Math.round(
+            (snap.bytesTransferred / snap.totalBytes) * 100
+          );
+          setPercentage(per);
+        },
+        (error) => {
+          console.log(error);
+          Alert.error(error.message);
+        },
+        () => {
+          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+            database.ref(`/profiles/${profiles.uid}/image`).push().set({
+              url: url,
+              des: description,
+            });
+          });
+          setIsLoading(false);
+          setPercentage(0);
+          Alert.success("Image Uploaded", 3000);
+          setDescription("");
+          close();
+        }
+      );
     } catch (error) {
       Alert.error("Image Not uploaded", 3000);
       setIsLoading(false);
+      setPercentage(0);
+      close();
       console.log(error);
     }
   };
