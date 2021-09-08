@@ -1,17 +1,36 @@
 import React, { useContext } from "react";
 import { ImagesContext } from "../../context/images.context";
+import ImageModal from "./ImageModal";
 import ImageCard from "./ImageCard";
+import { ImageGridStyle } from "./ImageContainer.styled";
+import { useModal } from "../../custom-hooks";
 
-function ImagesContainer() {
+function ImagesContainer({ setSelectedImage, selectedImage }) {
   const images = useContext(ImagesContext);
-  console.log("images", images);
+  const { isOpen, close, open } = useModal();
   return (
-    <div>
-      {images &&
-        images.map((item) => {
-          return <ImageCard url={item.url} des={item.des} />;
-        })}
-    </div>
+    <>
+      <ImageGridStyle>
+        {images &&
+          images.map((item) => {
+            return (
+              <ImageCard
+                url={item.url}
+                des={item.des}
+                setSelectedImage={setSelectedImage}
+                open={open}
+              />
+            );
+          })}
+      </ImageGridStyle>
+      {selectedImage && (
+        <ImageModal
+          selectedImage={selectedImage}
+          isOpen={isOpen}
+          close={close}
+        />
+      )}
+    </>
   );
 }
 

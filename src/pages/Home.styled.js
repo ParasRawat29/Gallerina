@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PreviewModal = styled.div`
+export const PreviewModalStyle = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
@@ -51,6 +51,8 @@ export const PreviewModal = styled.div`
 export const HomeWrapper = styled.div`
   text-align: center;
   background-color: beige;
+  width: 100%;
+  word-wrap: break-word;
   .head {
     font-size: 2.5rem;
     margin-bottom: 0.51rem;

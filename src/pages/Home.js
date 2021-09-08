@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Alert, Icon } from "rsuite";
-import Modal from "../Components/Modal";
 import { database, storage } from "../config";
 import { useModal } from "../custom-hooks";
-import { HomeWrapper, PreviewModal } from "./Home.styled";
+import { HomeWrapper } from "./Home.styled";
 import { ProfileContext } from "../context/profile.context";
-import { Progress } from "rsuite";
 import Navbar from "../Components/Navbar";
 import ImagesContainer from "../Components/Images/ImagesContainer";
+import PreviewModal from "../Components/PreviewModal";
 
 const FileInputTypes = ".png , .jpg , .jpeg";
 const acceptedFileTypes = ["image/png", "image/pjpeg", "image/jpeg"];
@@ -23,9 +22,9 @@ function Home() {
   const [description, setDescription] = useState(null);
   const [percentage, setPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [selectedImage, setSelectedImage] = useState(null);
   const { profiles } = useContext(ProfileContext);
-  // console.log(profiles);
+
   const onFileInputChange = (e) => {
     const currFiles = e.target.files;
 
@@ -93,6 +92,7 @@ function Home() {
     let des = e.target.value;
     setDescription(des);
   };
+  console.log(selectedImage);
   return (
     <>
       <Navbar />
@@ -109,45 +109,22 @@ function Home() {
             onChange={onFileInputChange}
           />
         </label>
-
-        {preview && isOpen && (
-          <PreviewModal>
-            <Modal close={close} open={open}>
-              {isLoading && (
-                <Progress.Line
-                  percent={percentage}
-                  strokeColor="#ffc107"
-                  status="active"
-                  strokeWidth="6"
-                />
-              )}
-              <header>Add Description and Upload</header>
-              <section>
-                <img src={preview} alt="yourimage" />
-              </section>
-              <footer>
-                <textarea
-                  className="textareaInput"
-                  type="textarea"
-                  maxLength="100"
-                  placeholder="Add Description (max 100 characters)"
-                  value={description}
-                  onChange={onDescriptionChange}
-                  disabled={isLoading}
-                />
-                <button
-                  className="uploadBtn"
-                  onClick={onUploadClick}
-                  disabled={isLoading}
-                >
-                  Upload
-                </button>
-              </footer>
-            </Modal>
-          </PreviewModal>
-        )}
-
-        <ImagesContainer />
+        <PreviewModal
+          preview={preview}
+          isOpen={isOpen}
+          close={close}
+          open={open}
+          description={description}
+          setDescription={setDescription}
+          onDescriptionChange={onDescriptionChange}
+          isLoading={isLoading}
+          percentage={percentage}
+          onUploadClick={onUploadClick}
+        />
+        <ImagesContainer
+          setSelectedImage={setSelectedImage}
+          selectedImage={selectedImage}
+        />
       </HomeWrapper>
     </>
   );
