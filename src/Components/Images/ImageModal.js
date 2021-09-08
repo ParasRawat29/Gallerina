@@ -2,12 +2,16 @@ import React from "react";
 import Modal from "../Modal";
 
 function ImageModal({ selectedImage, isOpen, close }) {
-  console.log("isOpen", isOpen);
-  if (selectedImage)
+  if (selectedImage.url)
     return (
       isOpen && (
         <Modal close={close} isOpen={isOpen}>
-          <img src={selectedImage} alt="l" width="100%" height="100%" />
+          <img
+            src={selectedImage.url}
+            className="img"
+            alt={selectedImage.des}
+          />
+          <h4>{selectedImage.des}</h4>
         </Modal>
       )
     );

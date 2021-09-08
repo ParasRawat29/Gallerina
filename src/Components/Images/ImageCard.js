@@ -5,12 +5,16 @@ function ImageCard({ url, des, setSelectedImage, open }) {
     <img
       src={url}
       alt={des}
-      width="400"
-      height="200"
       onClick={() => {
         open();
-        setSelectedImage(url);
+        setSelectedImage(() => {
+          return {
+            url: url,
+            des: des,
+          };
+        });
       }}
+      className="photoInGrid"
     />
   );
 }

@@ -22,7 +22,7 @@ function Home() {
   const [description, setDescription] = useState(null);
   const [percentage, setPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState({ url: null, des: null });
   const { profiles } = useContext(ProfileContext);
 
   const onFileInputChange = (e) => {
@@ -92,7 +92,6 @@ function Home() {
     let des = e.target.value;
     setDescription(des);
   };
-  console.log(selectedImage);
   return (
     <>
       <Navbar />

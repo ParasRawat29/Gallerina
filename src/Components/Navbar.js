@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { Alert } from "rsuite";
 import { auth } from "../config";
+import { ProfileContext } from "../context/profile.context";
 import { NavbarWrapper } from "./Navbar.styled";
 
 function Navbar() {
@@ -9,18 +10,31 @@ function Navbar() {
     Alert.info("signed out", 3000);
   }, []);
 
-  return (
-    <NavbarWrapper>
-      <ul>
-        <li className="navHead">Gallerina</li>
-        <li>
-          <button className="signOutBtn" onClick={onSignOutClick}>
-            SignOut
-          </button>
-        </li>
-      </ul>
-    </NavbarWrapper>
-  );
+  const { profiles } = useContext(ProfileContext);
+  console.log(profiles);
+
+  if (profiles) {
+    return (
+      <NavbarWrapper>
+        <ul>
+          <li className="navHead">Gallerina</li>
+
+          <li>
+            <img
+              src={profiles.profilePic}
+              alt="profilePic"
+              className="profilePic"
+            />
+            <button className="signOutBtn" onClick={onSignOutClick}>
+              SignOut
+            </button>
+          </li>
+        </ul>
+      </NavbarWrapper>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 export default Navbar;

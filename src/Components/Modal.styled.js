@@ -22,4 +22,13 @@ export const ModalBackdrop = styled.div`
     color: white;
     text-align: center;
   }
+  .img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    margin-bottom: 5px;
+  }
+  h4 {
+    word-spacing: 2px;
+  }
 `;

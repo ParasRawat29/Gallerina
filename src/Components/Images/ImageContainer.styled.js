@@ -5,8 +5,14 @@ export const ImageGridStyle = styled.div`
   padding: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: brown;
-  img {
-    margin: 5px;
+
+  .photoInGrid {
+    max-width: 370px;
+    max-height: 200px;
+    margin: 10px 5px;
+    background-color: green;
+    border-radius: 10px;
+    min-width: 10px;
+    cursor: pointer;
   }
 `;

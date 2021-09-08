@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavbarWrapper = styled.div`
   width: 100%;
-  position: sticky;
+  position: static;
   top: 0%;
 
   ul {
@@ -12,11 +12,12 @@ export const NavbarWrapper = styled.div`
     justify-content: space-between;
     list-style-type: none;
     padding: 5px;
+    align-items: center;
     margin-bottom: 0;
     li {
       text-decoration: none;
       .signOutBtn {
-        padding: 3px 20px;
+        padding: 5px 20px;
         border-radius: 20px;
         color: #e7624f;
         background-color: white;
@@ -39,6 +40,12 @@ export const NavbarWrapper = styled.div`
       -webkit-text-fill-color: transparent;
       background-image: linear-gradient(90deg, #a100ffff 0%, #71c4ffff 100%);
       display: inline;
+    }
+    .profilePic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
     }
   }
 `;

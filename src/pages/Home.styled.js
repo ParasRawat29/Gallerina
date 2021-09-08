@@ -50,7 +50,7 @@ export const PreviewModalStyle = styled.div`
 
 export const HomeWrapper = styled.div`
   text-align: center;
-  background-color: beige;
+
   width: 100%;
   word-wrap: break-word;
   .head {
