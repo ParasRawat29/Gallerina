@@ -21,6 +21,21 @@ export const ModalBackdrop = styled.div`
     margin: 60px auto;
     color: white;
     text-align: center;
+    .footer {
+      min-width: 250px;
+      margin: auto;
+      width: 60%;
+      /* background-color: aliceblue; */
+      h4 {
+        display: inline-block;
+      }
+      .deleteBtn {
+        background-color: inherit;
+        color: #e22828;
+        float: right;
+        clear: both;
+      }
+    }
   }
   .img {
     max-width: 100%;

@@ -22,7 +22,11 @@ function Home() {
   const [description, setDescription] = useState(null);
   const [percentage, setPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState({ url: null, des: null });
+  const [selectedImage, setSelectedImage] = useState({
+    url: null,
+    des: null,
+    id: "",
+  });
   const { profiles } = useContext(ProfileContext);
 
   const onFileInputChange = (e) => {

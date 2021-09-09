@@ -19,6 +19,7 @@ function ImagesContainer({ setSelectedImage, selectedImage }) {
                 url={item.url}
                 des={item.des ? item.des : ""}
                 setSelectedImage={setSelectedImage}
+                id={item.id}
                 open={open}
               />
             );

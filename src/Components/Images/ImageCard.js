@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImageCard({ url, des, setSelectedImage, open }) {
+function ImageCard({ url, des, id, setSelectedImage, open }) {
   return (
     <img
       src={url}
@@ -11,6 +11,7 @@ function ImageCard({ url, des, setSelectedImage, open }) {
           return {
             url: url,
             des: des,
+            id: id,
           };
         });
       }}
