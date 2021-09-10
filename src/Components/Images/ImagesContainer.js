@@ -4,14 +4,21 @@ import ImageModal from "./ImageModal";
 import ImageCard from "./ImageCard";
 import { ImageGridStyle } from "./ImageContainer.styled";
 import { useModal } from "../../custom-hooks";
+import { Loader } from "rsuite";
 
 function ImagesContainer({ setSelectedImage, selectedImage }) {
-  const images = useContext(ImagesContext);
-
+  const { images, isLoading } = useContext(ImagesContext);
   const { isOpen, close, open } = useModal();
+
   return (
     <>
       <ImageGridStyle>
+        {!images && isLoading && <Loader speed="normal" center size="lg" />}
+
+        {images && images.length === 0 && !isLoading && (
+          <h4>Add images using the + icon</h4>
+        )}
+
         {images &&
           images.map((item) => {
             return (

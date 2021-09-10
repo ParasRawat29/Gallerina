@@ -10,7 +10,7 @@ export const ImageGridStyle = styled.div`
     max-width: 370px;
     max-height: 200px;
     margin: 10px 5px;
-    background-color: green;
+    background-color: grey;
     border-radius: 10px;
     min-width: 10px;
     cursor: pointer;

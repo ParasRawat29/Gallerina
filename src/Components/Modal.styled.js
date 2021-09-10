@@ -25,15 +25,19 @@ export const ModalBackdrop = styled.div`
       min-width: 250px;
       margin: auto;
       width: 60%;
-      /* background-color: aliceblue; */
       h4 {
         display: inline-block;
       }
       .deleteBtn {
-        background-color: inherit;
-        color: #e22828;
-        float: right;
-        clear: both;
+        background-color: #e22828;
+        color: white;
+        display: block;
+        width: 70%;
+        margin: auto;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 5px;
       }
     }
   }
@@ -45,5 +49,29 @@ export const ModalBackdrop = styled.div`
   }
   h4 {
     word-spacing: 2px;
+  }
+  @media only screen and (max-width: 999px) {
+    .content {
+      .footer .deleteBtn {
+        margin-top: 70px;
+      }
+    }
+  }
+  @media only screen and (max-width: 770px) {
+    .content {
+      .img {
+        margin-top: 20%;
+      }
+      .footer .deleteBtn {
+        margin-top: 100px;
+      }
+    }
+  }
+  @media only screen and (max-width: 470px) {
+    .content {
+      .img {
+        margin-top: 50%;
+      }
+    }
   }
 `;

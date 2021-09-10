@@ -1,18 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Icon } from "rsuite";
-import { database } from "../../config";
+import { database, storage } from "../../config";
 import { ProfileContext } from "../../context/profile.context";
 import Modal from "../Modal";
 
 function ImageModal({ selectedImage, isOpen, close }) {
   const { profiles } = useContext(ProfileContext);
-  const handleDelete = async (id) => {
-    console.log(id);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleDelete = async (selectedImage) => {
+    console.log(selectedImage);
+    setIsLoading(true);
     try {
-      await database.ref(`/profiles/${profiles.uid}/images/${id}`).remove();
+      await storage.refFromURL(selectedImage.url).delete();
+      await database
+        .ref(`/profiles/${profiles.uid}/images/${selectedImage.id}`)
+        .remove();
+      setIsLoading(false);
       Alert.success("image removed");
       close();
     } catch (error) {
+      setIsLoading(false);
       Alert.error("Image not deleted");
     }
   };
@@ -30,9 +38,10 @@ function ImageModal({ selectedImage, isOpen, close }) {
             <h4>{selectedImage.des}</h4>
             <button
               className="deleteBtn"
-              onClick={() => handleDelete(selectedImage.id)}
+              onClick={() => handleDelete(selectedImage)}
+              disabled={isLoading}
             >
-              <Icon icon="trash" size="3x" />
+              Delete
             </button>
           </div>
         </Modal>
