@@ -11,9 +11,11 @@ export function ImagesProvider({ children }) {
 
   useEffect(() => {
     if (profiles) {
-      const imagesRef = database.ref(`/profiles/${profiles.uid}/images`);
+      const imagesRef = database
+        .ref(`/profiles/${profiles.uid}/images`)
+        .orderByChild("UploadedAt");
       imagesRef.on("value", (snap) => {
-        setImages(() => transformToArrayWithId(snap.val()));
+        setImages(() => transformToArrayWithId(snap.val()).reverse());
       });
       setIsLoading(false);
     }

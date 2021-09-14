@@ -20,9 +20,10 @@ function ImagesContainer({ setSelectedImage, selectedImage }) {
         )}
 
         {images &&
-          images.map((item) => {
+          images.map((item, index) => {
             return (
               <ImageCard
+                key={index}
                 url={item.url}
                 des={item.des ? item.des : ""}
                 setSelectedImage={setSelectedImage}

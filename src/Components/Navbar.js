@@ -11,7 +11,6 @@ function Navbar() {
   }, []);
 
   const { profiles } = useContext(ProfileContext);
-  console.log(profiles);
 
   if (profiles) {
     return (

@@ -9,7 +9,7 @@ function SignIn() {
     try {
       const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
       Alert.success("signed in", 3000);
-      console.log(user);
+
       if (additionalUserInfo.isNewUser) {
         let userRef = database.ref(`/profiles/${user.uid}`);
         await userRef.set({
