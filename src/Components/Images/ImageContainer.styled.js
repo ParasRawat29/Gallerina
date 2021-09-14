@@ -9,7 +9,7 @@ export const ImageGridStyle = styled.div`
   .photoInGrid {
     max-width: 370px;
     max-height: 200px;
-    margin: 10px 5px;
+    margin: 10px 10px;
     background-color: grey;
     border-radius: 10px;
     min-width: 10px;

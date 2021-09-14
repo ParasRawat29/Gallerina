@@ -1,9 +1,12 @@
 import React from "react";
-
-function ImageCard({ url, des, id, setSelectedImage, open }) {
+import { motion } from "framer-motion";
+function ImageCard({ url, des, id, setSelectedImage, open, UploadedAt }) {
   return (
-    <img
+    <motion.img
+      whileHover={{ scale: "1.1", cursor: "pointer" }}
+      whileTap={{ scale: "0.9" }}
       src={url}
+      layout
       alt={des}
       onClick={() => {
         open();
@@ -12,6 +15,7 @@ function ImageCard({ url, des, id, setSelectedImage, open }) {
             url: url,
             des: des,
             id: id,
+            UploadedAt: UploadedAt,
           };
         });
       }}

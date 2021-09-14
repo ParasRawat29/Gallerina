@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Alert, Icon } from "rsuite";
+import { Alert } from "rsuite";
 import { database, storage } from "../../config";
 import { ProfileContext } from "../../context/profile.context";
 import Modal from "../Modal";

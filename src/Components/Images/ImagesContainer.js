@@ -28,6 +28,7 @@ function ImagesContainer({ setSelectedImage, selectedImage }) {
                 setSelectedImage={setSelectedImage}
                 id={item.id}
                 open={open}
+                UploadedAt={item.UploadedAt}
               />
             );
           })}

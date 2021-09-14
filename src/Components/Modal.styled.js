@@ -6,7 +6,7 @@ export const ModalBackdrop = styled.div`
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.75);
-
+  z-index: 10000;
   .closeBtn {
     position: absolute;
     top: 2%;
@@ -63,7 +63,7 @@ export const ModalBackdrop = styled.div`
         margin-top: 20%;
       }
       .footer .deleteBtn {
-        margin-top: 100px;
+        margin-top: 70px;
       }
     }
   }
