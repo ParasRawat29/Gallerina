@@ -79,28 +79,30 @@ function UploadModal({
               strokeWidth="3"
             />
           )}
-          <header>Add Description and Upload</header>
-          <section>
-            <img src={preview} alt="yourimage" />
-          </section>
-          <footer>
-            <textarea
-              className="textareaInput"
-              type="textarea"
-              maxLength="100"
-              placeholder="Add Description (max 100 characters)"
-              value={description}
-              onChange={onDescriptionChange}
-              disabled={isLoading}
-            />
-            <button
-              className="uploadBtn"
-              onClick={onUploadClick}
-              disabled={isLoading}
-            >
-              Upload
-            </button>
-          </footer>
+          <div className="previewWrapper">
+            <header>Add Description and Upload</header>
+            <section>
+              <img src={preview} alt="yourimage" />
+            </section>
+            <footer>
+              <textarea
+                className="textareaInput"
+                type="textarea"
+                maxLength="100"
+                placeholder="Add Description (max 100 characters)"
+                value={description}
+                onChange={onDescriptionChange}
+                disabled={isLoading}
+              />
+              <button
+                className="uploadBtn"
+                onClick={onUploadClick}
+                disabled={isLoading}
+              >
+                Upload
+              </button>
+            </footer>
+          </div>
         </Modal>
       </PreviewModalStyle>
     )

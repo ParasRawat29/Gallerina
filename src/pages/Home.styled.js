@@ -4,6 +4,16 @@ export const PreviewModalStyle = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  .previewWrapper {
+    height: 100%;
+    section {
+      margin-bottom: 10px;
+      height: 75%;
+      img {
+        max-height: 100%;
+      }
+    }
+  }
   header {
     font-size: 1.62rem;
     font-weight: 700;
@@ -15,7 +25,7 @@ export const PreviewModalStyle = styled.div`
     width: 100%;
     height: 80%;
     padding: 10px;
-
+    max-height: 500px;
     img {
       max-width: 100%;
       max-height: 100%;
@@ -34,12 +44,14 @@ export const PreviewModalStyle = styled.div`
       outline: none;
       height: auto;
       max-height: 500px;
+      background-color: #2c2f35;
       min-height: 50px;
+      color: white;
     }
     .textareaInput:focus {
       border-color: #719ece;
       box-shadow: 0 0 20px #719ece;
-      color: black;
+      color: white;
     }
     .uploadBtn {
       padding: 2px 10px;
@@ -71,6 +83,7 @@ export const HomeWrapper = styled.div`
 
   width: 100%;
   word-wrap: break-word;
+
   .head {
     font-size: 2.5rem;
     margin-bottom: 0.51rem;
@@ -86,5 +99,11 @@ export const HomeWrapper = styled.div`
   label {
     margin-top: 20px;
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: 350px) {
+    .head {
+      font-weight: lighter;
+    }
   }
 `;
