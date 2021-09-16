@@ -33,7 +33,7 @@ export const PreviewModalStyle = styled.div`
       resize: none;
       outline: none;
       height: auto;
-      max-height: 100px;
+      max-height: 500px;
       min-height: 50px;
     }
     .textareaInput:focus {
@@ -59,6 +59,7 @@ export const PreviewModalStyle = styled.div`
       flex-direction: column;
       .textareaInput {
         width: 100%;
+        min-height: 80px;
         margin-bottom: 30px;
       }
     }
@@ -74,6 +75,10 @@ export const HomeWrapper = styled.div`
     font-size: 2.5rem;
     margin-bottom: 0.51rem;
     color: rebeccapurple;
+    font-weight: 700;
+  }
+  h6 {
+    font-weight: lighter;
   }
   input {
     display: none;

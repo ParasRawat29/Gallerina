@@ -55,8 +55,7 @@ function Home() {
     <>
       <Navbar />
       <HomeWrapper>
-        <h3 className="head">Your Gallery</h3>
-        <h6>Lorem ipsum dolor, sit amet consectetur adipisicing</h6>
+        <h3 className="head">Gallery</h3>
 
         <label htmlFor="FileUpload">
           <Icon icon="plus-circle" size="3x" strokeColor="red" />

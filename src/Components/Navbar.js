@@ -25,7 +25,7 @@ function Navbar() {
               className="profilePic"
             />
             <button className="signOutBtn" onClick={onSignOutClick}>
-              SignOut
+              Sign Out
             </button>
           </li>
         </ul>
