@@ -9,6 +9,7 @@ export const PreviewModalStyle = styled.div`
     font-weight: 700;
     height: 10%;
     color: antiquewhite;
+    margin: 20px 0;
   }
   section {
     width: 100%;
@@ -18,7 +19,6 @@ export const PreviewModalStyle = styled.div`
     img {
       max-width: 100%;
       max-height: 100%;
-      min-width: 310px;
     }
   }
   footer {
@@ -32,6 +32,9 @@ export const PreviewModalStyle = styled.div`
       width: 80%;
       resize: none;
       outline: none;
+      height: auto;
+      max-height: 100px;
+      min-height: 50px;
     }
     .textareaInput:focus {
       border-color: #719ece;
@@ -44,6 +47,20 @@ export const PreviewModalStyle = styled.div`
       font-size: 1.3rem;
       background-color: lightgreen;
       color: black;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    section {
+      height: max-content;
+      margin-bottom: 50px;
+    }
+
+    footer {
+      flex-direction: column;
+      .textareaInput {
+        width: 100%;
+        margin-bottom: 30px;
+      }
     }
   }
 `;

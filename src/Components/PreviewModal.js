@@ -87,6 +87,7 @@ function UploadModal({
             <textarea
               className="textareaInput"
               type="textarea"
+              rows="3"
               maxLength="100"
               placeholder="Add Description (max 100 characters)"
               value={description}

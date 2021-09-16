@@ -20,7 +20,7 @@ export const ModalBackdrop = styled.div`
     width: 70%;
     height: 80%;
     min-height: 300px;
-    min-width: 300px;
+    min-width: 290px;
     min-height: 300px;
     margin: 40px auto;
     /* background-color: lightblue; */
@@ -44,7 +44,6 @@ export const ModalBackdrop = styled.div`
         img {
           max-width: 100%;
           max-height: 100%;
-
           margin-top: auto;
         }
       }
