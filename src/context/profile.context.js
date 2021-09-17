@@ -20,8 +20,8 @@ export function ProfileProvider({ children }) {
           };
 
           setProfiles(data);
+          setIsLoading(false);
         });
-        setIsLoading(false);
       } else {
         if (userRef) userRef.off();
         setProfiles(null);
@@ -30,9 +30,10 @@ export function ProfileProvider({ children }) {
     });
 
     return () => {
+      if (userRef) {
+        userRef.off();
+      }
       authUnSub();
-      setIsLoading(false);
-      if (userRef) userRef.off();
     };
   }, []);
   return (

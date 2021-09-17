@@ -5,8 +5,9 @@ import { ProfileContext } from "../context/profile.context";
 
 function PrivateRoute({ children, ...routeProps }) {
   const { profiles, isLoading } = useContext(ProfileContext);
+  console.log("private", isLoading, profiles);
 
-  if (!profiles && isLoading) {
+  if (isLoading) {
     <Container>
       <Loader center vertical content="loading" size="lg" speed="slow" />
     </Container>;

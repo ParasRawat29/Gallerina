@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Alert, Icon } from "rsuite";
+import React, { useContext, useState } from "react";
+import { Alert, Icon, Loader } from "rsuite";
 
 import { HomeWrapper } from "./Home.styled";
 
@@ -7,6 +7,7 @@ import Navbar from "../Components/Navbar";
 import ImagesContainer from "../Components/Images/ImagesContainer";
 import UploadModal from "../Components/PreviewModal";
 import { useModal } from "../custom-hooks";
+import { ProfileContext } from "../context/profile.context";
 const FileInputTypes = ".png , .jpg , .jpeg";
 const acceptedFileTypes = ["image/png", "image/pjpeg", "image/jpeg"];
 
@@ -19,14 +20,15 @@ function Home() {
   const [preview, setPreview] = useState(null);
   const [description, setDescription] = useState(null);
   const [percentage, setPercentage] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState({
     url: null,
     des: null,
     id: "",
     UploadedAt: "",
   });
+
   const { isOpen, open, close } = useModal();
+
   const onFileInputChange = (e) => {
     const currFiles = e.target.files;
 
@@ -72,8 +74,6 @@ function Home() {
           setDescription={setDescription}
           description={description}
           onDescriptionChange={onDescriptionChange}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
           percentage={percentage}
           setPercentage={setPercentage}
           isOpen={isOpen}

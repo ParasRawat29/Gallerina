@@ -27,6 +27,28 @@ function SignIn() {
   const onGoogleSignIn = () => {
     signInWithProvider(new firebase.auth.GoogleAuthProvider());
   };
+
+  const DemoSignIn = () => {
+    auth
+      .signInWithEmailAndPassword("test123@gmail.com", "test123")
+      .then((userCredential) => {
+        let { additionalUserInfo, user } = userCredential;
+        if (additionalUserInfo.isNewUser) {
+          let userRef = database.ref(`/profiles/${user.uid}`);
+          userRef.set({
+            name: "Demo",
+            createdAt: firebase.database.ServerValue.TIMESTAMP,
+            images: [{}],
+            profilePic: user.photoURL,
+          });
+        }
+      })
+      .catch((error) => {
+        let errorMessage = error.message;
+        Alert.error(errorMessage);
+        console.log(errorMessage);
+      });
+  };
   return (
     <SignInWrapper>
       <div div className="signInHeading">
@@ -38,6 +60,9 @@ function SignIn() {
           <button onClick={onGoogleSignIn}>
             <Icon icon="google" size="2x" /> Google Sign In
           </button>
+        </div>
+        <div className="demoSignIn">
+          <button onClick={DemoSignIn}>DEMO</button>
         </div>
       </SignInBtnWrapper>
     </SignInWrapper>

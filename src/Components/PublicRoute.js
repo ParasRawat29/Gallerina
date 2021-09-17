@@ -5,9 +5,9 @@ import { ProfileContext } from "../context/profile.context";
 
 function PublicRoute({ children, ...routeProps }) {
   const { profiles, isLoading } = useContext(ProfileContext);
-  console.log(isLoading);
+  console.log("public", isLoading, profiles);
 
-  if (!profiles && isLoading) {
+  if (isLoading && !profiles) {
     <Container>
       <Loader center vertical content="loading" size="md" speed="slow" />
     </Container>;

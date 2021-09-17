@@ -37,15 +37,23 @@ export const SignInBtnWrapper = styled.div`
     background-color: orange;
 
     border-radius: 50px;
+    margin: 20px 0px;
+  }
+  .demoSignIn {
+    background-color: teal;
+    border-radius: 50px;
     button {
-      width: 90%;
-      outline: none;
-      border: none;
-      padding: 2px 20px;
-      background-color: inherit;
-      border-radius: 50px;
-      font-size: 1.4rem;
-      color: black;
+      color: white;
     }
+  }
+  button {
+    width: 90%;
+    outline: none;
+    border: none;
+    padding: 2px 20px;
+    background-color: inherit;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    color: black;
   }
 `;

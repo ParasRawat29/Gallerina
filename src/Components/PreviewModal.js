@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Progress } from "rsuite";
 import Modal from "../Components/Modal";
 import { PreviewModalStyle } from "../pages/Home.styled";
@@ -9,10 +9,10 @@ import firebase from "firebase";
 function UploadModal({
   preview,
   percentage,
-  isLoading,
+
   description,
   onDescriptionChange,
-  setIsLoading,
+
   setPercentage,
   img,
   open,
@@ -21,6 +21,7 @@ function UploadModal({
   setDescription,
 }) {
   const { profiles } = useContext(ProfileContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onUploadClick = async () => {
     try {

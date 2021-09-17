@@ -13,7 +13,7 @@ function ImagesContainer({ setSelectedImage, selectedImage }) {
   return (
     <>
       <ImageGridStyle>
-        {!images && isLoading && <Loader speed="normal" center size="lg" />}
+        {isLoading && <Loader speed="normal" center size="lg" />}
 
         {images && images.length === 0 && !isLoading && (
           <h4>Add images using the + icon</h4>
@@ -34,6 +34,7 @@ function ImagesContainer({ setSelectedImage, selectedImage }) {
             );
           })}
       </ImageGridStyle>
+
       {selectedImage.url && (
         <ImageModal
           selectedImage={selectedImage}

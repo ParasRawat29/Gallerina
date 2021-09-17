@@ -3,7 +3,7 @@ import { Alert } from "rsuite";
 import { auth } from "../config";
 import { ProfileContext } from "../context/profile.context";
 import { NavbarWrapper } from "./Navbar.styled";
-
+import demoPic from "../Images/demoPic.png";
 function Navbar() {
   const onSignOutClick = useCallback(() => {
     auth.signOut();
@@ -20,7 +20,7 @@ function Navbar() {
 
           <li>
             <img
-              src={profiles.profilePic}
+              src={profiles.profilePic ? profiles.profilePic : demoPic}
               alt="profilePic"
               className="profilePic"
             />
