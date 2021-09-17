@@ -8,7 +8,7 @@ export const PreviewModalStyle = styled.div`
     height: 100%;
     section {
       margin-bottom: 10px;
-      height: 75%;
+      height: 70%;
       img {
         max-height: 100%;
       }

@@ -28,7 +28,7 @@ function UploadModal({
       setIsLoading(true);
       const uploadTask = storage
         .ref(`/profiles/${profiles.uid}`)
-        .child(img.name)
+        .child(`${img.name}/` + new Date().getTime())
         .put(img);
       uploadTask.on(
         "state_changed",
